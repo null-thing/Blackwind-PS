@@ -1,18 +1,18 @@
 while True:
-    choose =  input("incode or decode? 0.encrypt 1.decrypt")
+    choose =  input("incode or decode? 0.encrypt 1.decrypt : ")
     
     if choose == "0":
-        inp = input("(small case)N: ")
+        inp = input("N: ")
         enc = True
         break
     elif choose == "1":
-        inp = input("(small case)C: ")
+        inp = input("C: ")
         enc = False
         break
     else:
         print("please type correctly.")
 
-key = input("K: ")
+key = input("K: ").lower()
 result = ""
 while len(inp) != len(key):
     if len(inp)>len(key):
@@ -30,11 +30,11 @@ while inp:
         o = ord(inp[0])
         if enc: 
             k = o + converted[0]
-            if   k > 122:
+            if  o<91 and k>90 or o>96 and k > 122:
                 k-=26
         else:
             k = o - converted[0]
-            if  k < 96:
+            if  o<91 and k<65 or o > 96 and k < 96:
                 k += 26
         result += chr(k)
     inp = inp[1:]
